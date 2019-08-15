@@ -1,10 +1,11 @@
 <template>
   <div>
-    test
+    Rent A hive
   </div>
 </template>
 
 <script>
 export default {
+
 }
 </script>
