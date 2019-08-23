@@ -1,5 +1,5 @@
 <template>
   <div>
-    Product list
+    Cart
   </div>
 </template>

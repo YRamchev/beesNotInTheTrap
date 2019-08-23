@@ -1,40 +1,26 @@
 <template>
-  <header>
-    <v-app-bar
-      app
-      clipped-left
-      color="amber"
-    >
-      <v-app-bar-nav-icon @click="drawer = !drawer" />
-      <nuxt-link :to="{name: 'index'}" tag="span" class="header-logo">
-        <span class="title ml-3 mr-5">
-          BeesNotInTheTrap&nbsp;
-        </span>
-      </nuxt-link>
-      <v-spacer />
-      <v-text-field
-        solo-inverted
-        flat
-        hide-details
-        label="Search"
-        prepend-inner-icon="search"
-      />
-      <v-spacer />
-      <div>
-        <button type="button" class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default">
-          <span class="v-btn__content">
-            <i aria-hidden="true" class="v-icon notranslate mdi mdi-cart theme--dark" />
-          </span>
-        </button>
-        <button type="button" class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default">
-          <span class="v-btn__content">
-            <i aria-hidden="true" class="v-icon notranslate mdi mdi-account theme--dark" />
-          </span>
-        </button>
+  <header class="header">
+    <div class="header__left">
+      <div class="header__logo">
+        <nuxt-link :to="{name: 'index'}">
+          Logo
+        </nuxt-link>
       </div>
-    </v-app-bar>
-
-    <TheNav :drawer="drawer" />
+      <div class="header__nav">
+        <TheNav />
+      </div>
+    </div>
+    <div class="header__right">
+      <a href="" @click.prevent="signOut">
+        sign out
+      </a>
+      <nuxt-link :to="{name: 'Cart'}">
+        ACCOUNT
+      </nuxt-link>
+      <nuxt-link :to="{name: 'Cart'}">
+        CART
+      </nuxt-link>
+    </div>
   </header>
 </template>
 
@@ -45,14 +31,29 @@ export default {
   components: {
     TheNav
   },
-  data: () => ({
-    drawer: true
-  })
+
+  methods: {
+    signOut () {
+      this.$store.dispatch('auth/signOut')
+        .then(() => {
+          this.$router.push({ name: 'index' })
+        })
+    }
+  }
 }
 </script>
 
 <style scoped>
-  .header-logo {
-    cursor: pointer;
+  .header {
+    display: flex;
+    background: #fff;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  .header__left {
+    display: flex;
+    align-items: center;
   }
 </style>

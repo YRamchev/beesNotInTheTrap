@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "beesnotinthetrap",
+    "staging": "beesnotinthetrap"
+  }
+}
