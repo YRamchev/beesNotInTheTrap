@@ -2,21 +2,27 @@ import Vue from 'vue'
 import { db } from '~/plugins/firebase.js'
 
 export const state = () => ({
-  items: []
+  items: {}
 })
 
+export const getters = {
+  items (state) {
+    return state.items
+  }
+}
+
 export const actions = {
-  createHoney ({ context }, honey) {
-    db.collection('honey').doc().set(honey)
+  createProduct ({ context }, product) {
+    db.collection('products').doc().set(product)
   },
 
-  fetchHoney ({ commit }) {
-    return new Promise((resolve, reject) => {
-      db.collection('honey').get().then((querySnapshot) => {
+  fetchProducts ({ commit }) {
+    return new Promise((resolve) => {
+      db.collection('products').get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          console.log(doc.id, doc.data())
           commit('setItem', { id: doc.id, item: doc.data() })
         })
+        resolve()
       })
     })
   }

@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <ProductList />
-    {{ products }}
+    <ProductList :products="products" />
   </div>
 </template>
 
@@ -12,18 +11,16 @@ export default {
   components: {
     ProductList
   },
-  asyncData ({ store }) {
-    store.dispatch('honey/fetchHoney')
-    const products = store.state.honey.items
-    return { products }
+  async asyncData ({ store }) {
+    await store.dispatch('honey/fetchProducts')
+    const products = Object.values(store.getters['honey/items'])
+
+    return {
+      products
+    }
   }
 }
 </script>
 
 <style scoped>
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 24px;
-  }
 </style>

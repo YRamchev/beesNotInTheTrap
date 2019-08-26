@@ -1,8 +1,8 @@
 <template>
   <div>
     <form @submit.prevent="register">
-      <input v-model="form.email" type="text" />
-      <input v-model="form.password" type="password" />
+      <input v-model="form.email" type="text">
+      <input v-model="form.password" type="password">
       <button type="submit">
         Register
       </button>
@@ -18,20 +18,25 @@ export default {
       form: {
         email: '',
         password: ''
-      }
+      },
+      error: ''
     }
   },
 
   methods: {
-    register () {
-      this.$store.dispatch('auth/createUserWithEmailAndPassword', this.form)
-        .then(() => {
-          this.form.email = ''
-          this.form.password = ''
-        })
-        .then(() => {
-          this.$router.push({ name: 'index' })
-        })
+    async register () {
+      try {
+        await this.$store.dispatch('auth/createUserWithEmailAndPassword', this.form)
+          .then(() => {
+            this.form.email = ''
+            this.form.password = ''
+          })
+          .then(() => {
+            this.$router.push({ name: 'index' })
+          })
+      } catch (err) {
+        this.error = err
+      }
     }
   }
 }

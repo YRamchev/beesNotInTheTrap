@@ -1,8 +1,8 @@
 <template>
   <div>
     <form @submit.prevent="signIn">
-      <input v-model="form.email" type="text" />
-      <input v-model="form.password" type="password" />
+      <input v-model="form.email" type="text">
+      <input v-model="form.password" type="password">
       <button type="submit">
         Sign In
       </button>

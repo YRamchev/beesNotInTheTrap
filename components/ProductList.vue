@@ -2,7 +2,7 @@
   <div class="list">
     <div
       v-for="product in products"
-      :key="product.id"
+      :key="product['.key']"
       class="list__item"
     >
       <ProductListItem :product="product" />
@@ -18,26 +18,12 @@ export default {
     ProductListItem
   },
 
-  data: () => ({
-    products: [
-      {
-        id: 1,
-        name: 'Natural Honey',
-        price: 15,
-        size: 420,
-        rating: 5,
-        thumb: 'http://3.imimg.com/data3/AU/VG/GLADMIN-74494/honey-jar-500x500.jpg'
-      },
-      {
-        id: 2,
-        name: 'Natural Honey with Mint',
-        price: 20,
-        size: 420,
-        rating: 4.2,
-        thumb: 'https://i2.wp.com/www.bumbleberryfarms.com/wp-content/uploads/2018/04/honey-with-dipper.jpg?fit=640%2C640&ssl=1'
-      }
-    ]
-  })
+  props: {
+    products: {
+      required: true,
+      type: Array
+    }
+  }
 }
 </script>
 

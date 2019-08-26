@@ -4,25 +4,27 @@ export const state = () => ({
   user: null
 })
 
+export const getters = {
+  isAuthenticated (state) {
+    return !!state.user
+  },
+
+  loggedInUser (state) {
+    return state.user
+  }
+}
+
 export const actions = {
   createUserWithEmailAndPassword ({ context }, form) {
     auth.createUserWithEmailAndPassword(form.email, form.password)
-      .then((cred) => {
-        console.log(cred)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
+      .then((cred) => {})
+      .catch(() => {})
   },
 
   signInWithEmailAndPassword ({ context }, form) {
     auth.signInWithEmailAndPassword(form.email, form.password)
-      .then((cred) => {
-        console.log(cred)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
+      .then((cred) => {})
+      .catch(() => {})
   },
 
   signOut ({ commit }) {
@@ -30,9 +32,7 @@ export const actions = {
       .then(() => {
         commit('LOGOUT')
       })
-      .catch((err) => {
-        console.error(err)
-      })
+      .catch(() => {})
   }
 }
 

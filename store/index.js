@@ -1,3 +1,1 @@
-export const state = () => ({
-  auth: null
-})
+export const state = () => ({})

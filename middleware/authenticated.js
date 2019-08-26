@@ -1,3 +1,5 @@
-export default function ({ redirect, context }) {
-  console.log(context.store)
+export default function ({ store, redirect }) {
+  if (store.getters['auth/isAuthenticated']) {
+    return redirect({ name: 'index' })
+  }
 }
