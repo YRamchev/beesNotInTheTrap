@@ -18,18 +18,18 @@ export const getters = {
 
 export const actions = {
   addToCart ({ commit }, product) {
-    commit('addToCart', product)
-    commit('saveCart')
+    commit('ADD_TO_CART', product)
+    commit('SAVE_CART')
   },
 
   removeFromCart ({ commit }, product) {
-    commit('removeFromCart', product)
-    commit('saveCart')
+    commit('REMOVE_FROM_CART', product)
+    commit('SAVE_CART')
   }
 }
 
 export const mutations = {
-  addToCart (state, product) {
+  ADD_TO_CART (state, product) {
     const index = state.items.findIndex(item => item['.key'] === product['.key'])
 
     if (index < 0) {
@@ -43,7 +43,7 @@ export const mutations = {
     }
   },
 
-  removeFromCart (state, product) {
+  REMOVE_FROM_CART (state, product) {
     const index = state.items.findIndex(item => item['.key'] === product['.key'])
 
     if (index >= 0) {
@@ -52,7 +52,7 @@ export const mutations = {
     }
   },
 
-  saveCart (state) {
+  SAVE_CART (state) {
     localStorage.setItem('cart', JSON.stringify(state.items))
     localStorage.setItem('cartCount', state.itemsCount)
   }

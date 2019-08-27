@@ -20,7 +20,7 @@ export const actions = {
     return new Promise((resolve) => {
       db.collection('products').get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          commit('setItem', { id: doc.id, item: doc.data() })
+          commit('SET_ITEM', { id: doc.id, item: doc.data() })
         })
         resolve()
       })
@@ -29,7 +29,7 @@ export const actions = {
 }
 
 export const mutations = {
-  setItem (state, { id, item }) {
+  SET_ITEM (state, { id, item }) {
     item['.key'] = id
     Vue.set(state.items, id, item)
   }
