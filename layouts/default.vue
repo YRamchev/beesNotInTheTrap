@@ -1,19 +1,22 @@
 <template>
-  <v-app>
+  <div>
     <TheHeader />
-    <v-content>
+    <main>
       <nuxt />
-    </v-content>
-  </v-app>
+    </main>
+    <TheFooter />
+  </div>
 </template>
 
 <script>
 import { auth } from '../plugins/firebase'
 import TheHeader from '@/components/TheHeader'
+import TheFooter from '@/components/TheFooter'
 
 export default {
   components: {
-    TheHeader
+    TheHeader,
+    TheFooter
   },
   created () {
     auth.onAuthStateChanged((user) => {

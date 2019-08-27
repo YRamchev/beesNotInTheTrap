@@ -30,33 +30,26 @@ export const actions = {
 
 export const mutations = {
   addToCart (state, product) {
-    const isAdded = state.items.findIndex(item => item['.key'] === product['.key'])
-    console.log(isAdded)
-    if (isAdded < 0) {
+    const index = state.items.findIndex(item => item['.key'] === product['.key'])
+
+    if (index < 0) {
       product.quantity = 1
       state.items.push(product)
       state.itemsCount++
     } else {
-      console.log(state.items[isAdded].quantity)
-      const quantity = state.items[isAdded].quantity + 1
-      state.items[isAdded].quantity = quantity
+      const quantity = state.items[index].quantity + 1
+      state.items[index].quantity = quantity
       state.itemsCount++
     }
   },
 
-  removeFromCart (state, painting) {
-    // let index = -1;
-    // state.cart.find((item, i) => {
-    //   if(item._id === painting._id){
-    //     index = i;
-    //     return;
-    //   }
-    // });
+  removeFromCart (state, product) {
+    const index = state.items.findIndex(item => item['.key'] === product['.key'])
 
-    // if(index > -1) {
-    //   state.cart.splice(index, 1);
-    //   state.cartCount--;
-    // }
+    if (index >= 0) {
+      state.cartCount -= state.items[index].quantity
+      state.cart.splice(index, 1)
+    }
   },
 
   saveCart (state) {

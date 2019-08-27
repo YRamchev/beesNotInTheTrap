@@ -24,6 +24,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '~/assets/reset.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -36,8 +37,7 @@ export default {
   */
   devModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/eslint-module'
   ],
   /*
   ** Nuxt.js modules
@@ -52,13 +52,6 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-  },
-  /*
-  ** vuetify module configuration
-  ** https://github.com/nuxt-community/vuetify-module
-  */
-  vuetify: {
-    customVariables: ['~/assets/variables.scss']
   },
   /*
   ** Build configuration
