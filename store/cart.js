@@ -7,11 +7,11 @@ export const state = () => ({
 })
 
 export const getters = {
-  cart (state) {
+  items (state) {
     return state.items
   },
 
-  cartCount (state) {
+  count (state) {
     return state.itemsCount
   }
 }
