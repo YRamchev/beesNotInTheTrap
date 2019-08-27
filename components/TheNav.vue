@@ -23,9 +23,9 @@ export default {
     items: [
       { name: 'Products', text: 'Honey Shop' },
       { name: 'RentHive', text: 'Rent A Hive' },
-      { name: 'index', text: 'Our Mission' },
-      { name: 'index', text: 'Blog' },
-      { name: 'index', text: 'Contact Us' }
+      { name: 'Mission', text: 'Our Mission' },
+      { name: 'Blog', text: 'Blog' },
+      { name: 'Contact', text: 'Contact Us' }
     ]
   })
 }
@@ -42,6 +42,7 @@ export default {
     text-decoration: none;
     padding: 12px;
     text-transform: uppercase;
+    font-weight: bold;
     color: rgba(0, 0, 0, .57);
   }
 
