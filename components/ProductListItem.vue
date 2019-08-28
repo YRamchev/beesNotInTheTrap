@@ -4,7 +4,7 @@
       <img
         src="https://www.beechworthhoney.com.au/wp-content/uploads/2017/10/BeeRaw_honeyhoneycomb_240g_6006x600.png"
         alt="test"
-      />
+      >
     </div>
     <h2 class="product__title">
       {{ product.name }}

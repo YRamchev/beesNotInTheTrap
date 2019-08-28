@@ -1,4 +1,4 @@
-import { auth } from '~/plugins/firebase.js'
+import { auth, firebase } from '~/plugins/firebase.js'
 
 export const state = () => ({
   user: null
@@ -19,6 +19,11 @@ export const actions = {
     auth.createUserWithEmailAndPassword(form.email, form.password)
       .then((cred) => {})
       .catch(() => {})
+  },
+
+  signInWithGoogle () {
+    const googleProvider = new firebase.auth.GoogleAuthProvider()
+    return auth.signInWithPopup(googleProvider)
   },
 
   signInWithEmailAndPassword ({ context }, form) {
