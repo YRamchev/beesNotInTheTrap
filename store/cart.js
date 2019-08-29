@@ -11,6 +11,16 @@ export const getters = {
     return state.items
   },
 
+  total (state) {
+    const items = state.items
+    let total = 0
+    items.forEach((item) => {
+      total += item.price * item.quantity
+    })
+
+    return total
+  },
+
   count (state) {
     return state.itemsCount
   }
@@ -47,8 +57,8 @@ export const mutations = {
     const index = state.items.findIndex(item => item['.key'] === product['.key'])
 
     if (index >= 0) {
-      state.cartCount -= state.items[index].quantity
-      state.cart.splice(index, 1)
+      state.itemsCount -= state.items[index].quantity
+      state.items.splice(index, 1)
     }
   },
 

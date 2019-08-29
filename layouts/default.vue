@@ -18,7 +18,8 @@ export default {
     TheHeader,
     TheFooter
   },
-  created () {
+
+  beforeCreate () {
     auth.onAuthStateChanged((user) => {
       if (user) {
         const userData = {

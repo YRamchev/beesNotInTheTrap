@@ -22,6 +22,15 @@
 import axios from 'axios'
 
 export default {
+  head () {
+    return {
+      title: 'Welcome | BeesInTheTrap',
+      meta: [
+        { hid: 'description', name: 'description', content: 'My custom description' }
+      ]
+    }
+  },
+
   async asyncData () {
     const res = await axios.get('https://nuxt-ssr.firebaseio.com/facts.json')
     const honey = res.data
