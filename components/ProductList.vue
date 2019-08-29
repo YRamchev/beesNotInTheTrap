@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>
-      100% Bulgarian Honey!
+      100% Honey!
     </h1>
     <div class="list">
       <div

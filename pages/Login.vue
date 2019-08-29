@@ -53,6 +53,16 @@
 <script>
 export default {
   middleware: 'authenticated',
+
+  head () {
+    return {
+      title: 'Login | BeesInTheTrap',
+      meta: [
+        { hid: 'description', name: 'description', content: 'My custom description' }
+      ]
+    }
+  },
+
   data () {
     return {
       form: {

@@ -12,6 +12,15 @@
 
 <script>
 export default {
+  head () {
+    return {
+      title: 'Rent a Hive | BeesInTheTrap',
+      meta: [
+        { hid: 'description', name: 'description', content: 'My custom description' }
+      ]
+    }
+  },
+
   data () {
     return {
       honey: {
@@ -23,7 +32,7 @@ export default {
 
   methods: {
     addHoney () {
-      this.$store.dispatch('honey/createHoney', this.honey)
+      this.$store.dispatch('honey/createProduct', this.honey)
     }
   }
 }

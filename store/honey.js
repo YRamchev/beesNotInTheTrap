@@ -13,17 +13,40 @@ export const getters = {
 
 export const actions = {
   createProduct ({ context }, product) {
-    db.collection('products').doc().set(product)
+    return new Promise((resolve, reject) => {
+      try {
+        db.collection('products').doc().set(product)
+        resolve()
+      } catch (err) {
+        reject(err)
+      }
+    })
   },
 
   fetchProducts ({ commit }) {
-    return new Promise((resolve) => {
-      db.collection('products').get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          commit('SET_ITEM', { id: doc.id, item: doc.data() })
+    return new Promise((resolve, reject) => {
+      try {
+        db.collection('products').get().then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            commit('SET_ITEM', { id: doc.id, item: doc.data() })
+          })
+          resolve()
         })
-        resolve()
-      })
+      } catch (err) {
+        reject(err)
+      }
+    })
+  },
+
+  fetchProduct ({ commit }, id) {
+    return new Promise((resolve, reject) => {
+      try {
+        db.collection('products').doc(id).get().then((querySnapshot) => {
+          resolve(querySnapshot.data())
+        })
+      } catch (err) {
+        reject(err)
+      }
     })
   }
 }

@@ -1,15 +1,45 @@
 <template>
   <div>
-    Get id - {{ id }}
+    <div>
+      name - {{ product.name }}
+    </div>
+    <div>
+      description - {{ product.description }}
+    </div>
+    <div>
+      inStock - {{ product.inStock }}
+    </div>
+    <div>
+      price - {{ product.price }}
+    </div>
+    <button @click="addToCart">
+      add to cart
+    </button>
   </div>
 </template>
 
 <script>
 
 export default {
-  data () {
+  head () {
     return {
-      id: this.$route.params.id
+      title: `${this.product.name} | BeesInTheTrap`,
+      meta: [
+        { hid: 'description', name: 'description', content: 'My custom description' }
+      ]
+    }
+  },
+  async asyncData ({ store, route }) {
+    const product = await store.dispatch('honey/fetchProduct', route.params.id)
+
+    return {
+      product
+    }
+  },
+
+  methods: {
+    addToCart () {
+      this.$store.dispatch('cart/addToCart', this.product)
     }
   }
 }
