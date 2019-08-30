@@ -19,7 +19,9 @@
             {{ item.price }}
           </td>
           <td>
+            <button @click="removeFromCart(item)">-</button>
             {{ item.quantity }}
+            <button  @click="addToCart(item)">+</button>
           </td>
           <td>
             {{ totalPricePerItem(item.price, item.quantity) }}
@@ -29,6 +31,13 @@
               Remove Product
             </button>
           </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>Total Price:</td>
+          <td>{{ totalPrice }}</td>
+          <td></td>
         </tr>
       </tbody>
     </table>
@@ -49,15 +58,27 @@ export default {
     }
   },
 
-  data () {
-    return {
-      cartItems: this.$store.getters['cart/items']
+  computed: {
+    cartItems () {
+      return this.$store.getters['cart/items']
+    },
+
+    totalPrice () {
+      return this.$store.getters['cart/total']
     }
   },
 
   methods: {
     totalPricePerItem (price, quantity) {
       return price * quantity
+    },
+
+    addToCart (product) {
+      this.$store.dispatch('cart/addToCart', product)
+    },
+
+    removeFromCart (product) {
+      this.$store.dispatch('cart/removeFromCart', product)
     },
 
     removeProduct (product) {
