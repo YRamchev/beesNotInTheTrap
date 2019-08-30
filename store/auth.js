@@ -16,9 +16,14 @@ export const getters = {
 
 export const actions = {
   createUserWithEmailAndPassword ({ context }, form) {
-    auth.createUserWithEmailAndPassword(form.email, form.password)
-      .then((cred) => {})
-      .catch(() => {})
+    return new Promise((resolve, reject) => {
+      try {
+        auth.createUserWithEmailAndPassword(form.email, form.password)
+        resolve()
+      } catch (err) {
+        reject(err)
+      }
+    })
   },
 
   signInWithGoogle () {
@@ -28,8 +33,6 @@ export const actions = {
 
   signInWithEmailAndPassword ({ context }, form) {
     auth.signInWithEmailAndPassword(form.email, form.password)
-      .then((cred) => {})
-      .catch(() => {})
   },
 
   signOut ({ commit }) {
