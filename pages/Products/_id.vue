@@ -39,6 +39,7 @@ export default {
 
   methods: {
     addToCart () {
+      this.product['.key'] = this.$route.params.id
       this.$store.dispatch('cart/addToCart', this.product)
     }
   }
