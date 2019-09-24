@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section class="container container--max-width">
     <div>
       name - {{ product.name }}
     </div>
@@ -15,7 +15,7 @@
     <button @click="addToCart">
       add to cart
     </button>
-  </div>
+  </section>
 </template>
 
 <script>

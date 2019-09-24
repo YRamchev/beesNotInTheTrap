@@ -1,22 +1,19 @@
-import Vue from 'vue'
-import { auth } from '~/plugins/firebase.js'
+import { db } from '~/plugins/firebase.js'
 
 export const state = () => ({
   items: {}
 })
 
 export const actions = {
-  createUser ({ state, commit }, { id, email }) {
+  createUser ({ context }, { id, email }) {
     return new Promise((resolve, reject) => {
       try {
         const registeredAt = Math.floor(Date.now() / 1000)
         email = email.toLowerCase()
-
-        const user = { email, registeredAt }
-        auth.database().ref('users').child(id).set(user)
+        const userData = { id, email, registeredAt }
+        db.collection('users').doc(id).set(userData)
           .then(() => {
-            commit('setItem', { resource: 'users', id, item: user })
-            resolve(state.items[id])
+            resolve()
           })
       } catch (err) {
         reject(err)
@@ -36,10 +33,4 @@ export const actions = {
   //       })
   //   })
   // }
-}
-
-export const mutations = {
-  setUser (state, { user, userId }) {
-    Vue.set(state.items, userId, user)
-  }
 }

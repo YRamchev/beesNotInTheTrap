@@ -52,7 +52,7 @@
 
 <script>
 export default {
-  middleware: 'authenticated',
+  middleware: 'notAuthenticated',
 
   head () {
     return {

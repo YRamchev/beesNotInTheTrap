@@ -1,0 +1,29 @@
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn--primary {
+    background: #a7ce0c;
+}
+
+.btn-group {
+    display: flex;
+}
+
+.btn-group--ease-top {
+    margin-top: $gutter / 2;
+}
+
+.btn-group--ease-bottom {
+    margin-bottom: $gutter / 2;
+}
+
+.btn-group .btn + .btn {
+    margin-left: $gutter / 2;
+}

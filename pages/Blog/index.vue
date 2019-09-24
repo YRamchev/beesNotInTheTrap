@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container container--max-width">
     Blog
   </div>
 </template>

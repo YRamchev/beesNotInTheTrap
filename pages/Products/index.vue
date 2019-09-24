@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container container--max-width">
     <ProductList :products="products" />
   </div>
 </template>
@@ -31,6 +31,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-</style>

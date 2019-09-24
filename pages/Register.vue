@@ -7,12 +7,15 @@
         Register
       </button>
     </form>
+    <div v-if="error">
+      {{ error }}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  middleware: 'authenticated',
+  middleware: 'notAuthenticated',
 
   head () {
     return {

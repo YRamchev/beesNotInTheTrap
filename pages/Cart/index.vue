@@ -1,59 +1,61 @@
 <template>
-  <div class="container">
-    <div v-if="cartItems.length">
-      <table>
-        <thead>
-          <tr>
-            <td>Product Name:</td>
-            <td>Price:</td>
-            <td>Quantity:</td>
-            <td>Total:</td>
-            <td>Actions</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="item in cartItems" :key="item['.key']">
-            <td>
-              {{ item.name }}
-            </td>
-            <td>
-              {{ item.price }}
-            </td>
-            <td>
-              <button @click="addToCart(item)">
-                +
-              </button>
-              {{ item.quantity }}
-              <button @click="removeFromCart(item)">
-                -
-              </button>
-            </td>
-            <td>
-              {{ totalPricePerItem(item.price, item.quantity) }}
-            </td>
-            <td>
-              <button @click="removeProduct(item)">
-                Remove Product
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>.</td>
-            <td>.</td>
-            <td>Total Price:</td>
-            <td>{{ totalPrice }}</td>
-            <td>.</td>
-          </tr>
-        </tbody>
-      </table>
-      <nuxt-link :to="{ name: 'Cart-Checkout' }" tag="button">
-        Checkout
-      </nuxt-link>
+  <section class="cart">
+    <div class="container container--max-width">
+      <div class="cart__left">
+        <div v-if="cartItems.length">
+          <table>
+            <thead>
+              <tr>
+                <td>Product</td>
+                <td>Price</td>
+                <td>QTY</td>
+                <td>Total</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in cartItems" :key="item['.key']">
+                <td>
+                  {{ item.name }}
+                  <button @click="removeProduct(item)">
+                    Remove Product
+                  </button>
+                </td>
+                <td>
+                  {{ item.price }}
+                </td>
+                <td>
+                  <button @click="addToCart(item)">
+                    +
+                  </button>
+                  {{ item.quantity }}
+                  <button @click="removeFromCart(item)">
+                    -
+                  </button>
+                </td>
+                <td>
+                  {{ totalPricePerItem(item.price, item.quantity) }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div v-else>
+          No products in cart
+        </div>
+      </div>
+      <div v-if="cartItems.length" class="cart__right">
+        <div class="cart__total">
+          <span>
+            Cart total:
+          </span>
+          {{ totalPrice }}
+        </div>
+        <nuxt-link :to="{ name: 'Cart-Checkout' }" tag="button" class="btn btn--block btn--primary">
+          Checkout
+        </nuxt-link>
+      </div>
     </div>
-    <div v-else>
-      No products in cart
-    </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -97,10 +99,18 @@ export default {
 }
 </script>
 
-<style scoped>
-  .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 48px 24px;
+<style lang="scss" scoped>
+  .cart .container {
+    display: flex;
+  }
+
+  .cart__left {
+    width: 70%;
+    padding-right: 24px;
+  }
+
+  .cart__right {
+    width: 30%;
+    padding-left: 24px;
   }
 </style>

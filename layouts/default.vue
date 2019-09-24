@@ -1,6 +1,7 @@
 <template>
   <div>
     <TheHeader />
+    <FlashMessage />
     <main>
       <nuxt />
     </main>
@@ -9,33 +10,19 @@
 </template>
 
 <script>
-import { auth } from '../plugins/firebase'
 import TheHeader from '@/components/TheHeader'
 import TheFooter from '@/components/TheFooter'
+import FlashMessage from '@/components/FlashMessage'
 
 export default {
   components: {
     TheHeader,
-    TheFooter
+    TheFooter,
+    FlashMessage
   },
 
   beforeCreate () {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        const userData = {
-          email: user.email
-        }
-        this.$store.commit('auth/SET_USER', userData)
-      }
-    })
+    this.$store.dispatch('auth/initAuthentication')
   }
 }
 </script>
-
-<style>
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 48px 24px;
-  }
-</style>

@@ -1,0 +1,28 @@
+.form__group {
+    width: 100%;
+}
+
+.form__group + .form__group {
+    margin-top: $gutter / 1.5;
+}
+
+.form__label {
+    color: $text-hint;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: $gutter / 6;
+}
+
+.form__input {
+    display: block;
+    width: 100%;
+
+    & > * {
+        width: 100%;
+        display: block;
+        border: 1px solid $text-hint;
+        border-radius: $radius;
+        padding: $gutter / 2;
+        font-size: 16px;
+    }
+}

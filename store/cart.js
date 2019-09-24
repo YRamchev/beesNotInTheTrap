@@ -39,6 +39,11 @@ export const actions = {
     commit('REMOVE_ITEM_FROM_CART', product)
     commit('TOTAL')
     commit('SAVE_CART')
+  },
+
+  clearCart ({ commit }) {
+    commit('CLEAR_CART')
+    commit('SAVE_CART')
   }
 }
 
@@ -95,5 +100,11 @@ export const mutations = {
     localStorage.setItem('cart', JSON.stringify(state.items))
     localStorage.setItem('cartCount', state.itemsCount)
     localStorage.setItem('cartTotal', state.total)
+  },
+
+  CLEAR_CART (state) {
+    state.items = []
+    state.total = 0
+    state.itemsCount = 0
   }
 }

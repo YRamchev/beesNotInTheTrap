@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="shop-now">
-      <div class="container">
+      <div class="container container--max-width">
         <div class="shop-now__left">
           <h1 class="shop-now__title">
             Discover the Taste of Honey.
@@ -22,7 +22,7 @@
       </div>
     </section>
     <section class="info">
-      <div class="container">
+      <div class="container container--max-width">
         <div class="col">
           100% organic
         </div>
@@ -38,17 +38,17 @@
       </div>
     </section>
     <section class="featured">
-      <div class="container">
+      <div class="container container--max-width">
         Featured products
       </div>
     </section>
     <section class="feedback">
-      <div class="container">
+      <div class="container container--max-width">
         Clients feedback
       </div>
     </section>
     <section class="subscribe">
-      <div class="container">
+      <div class="container container--max-width">
         Subscribe
       </div>
     </section>
@@ -117,19 +117,5 @@ export default {
     color: #fff;
     margin-bottom: 24px;
     font-size: 1.2rem;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 12px 24px;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #fff;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-
-  .btn--primary {
-    background: #a7ce0c;
   }
 </style>

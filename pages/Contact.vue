@@ -1,7 +1,15 @@
 <template>
-  <div>
-    Contact Us
-  </div>
+  <section class="contact">
+    <div class="container container--max-width">
+      <h1>
+        Contact Us
+      </h1>
+
+      <form @submit.prevent="submit">
+        test
+      </form>
+    </div>
+  </section>
 </template>
 
 <script>

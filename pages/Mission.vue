@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container container--max-width">
     Our Mission
   </div>
 </template>

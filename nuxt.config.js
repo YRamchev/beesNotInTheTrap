@@ -25,7 +25,7 @@ export default {
   */
   css: [
     '~/assets/icomoon/style.css',
-    '~/assets/reset.css'
+    { src: './assets/main.scss', lang: 'scss' }
   ],
   /*
   ** Plugins to load before mounting the App

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container container--max-width">
     <form @submit.prevent="addHoney">
       <input v-model="honey.name" type="text">
       <input v-model="honey.price" type="text">
@@ -37,9 +37,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-  input {
-    background: red;
-  }
-</style>
